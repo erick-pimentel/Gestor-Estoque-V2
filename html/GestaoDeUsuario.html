@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gestao de Usuario | Sistema de Estoque</title>
+  <link rel="stylesheet" href="../css/Style.css" />
+</head>
+<body class="dashboard-page">
+  <header class="site-header">
+    <div class="brand">
+      <div class="logo-icon">SE</div>
+      <span>Sistema de Estoque</span>
+    </div>
+    <div class="header-actions">
+      <a href="./Menu.html" class="btn-outline-custom">Menu</a>
+      <a href="./Main.html" id="logoutBtn" data-logout-link="true" class="btn-outline-custom">Sair</a>
+    </div>
+  </header>
+
+  <nav class="sidebar" aria-label="Menu principal">
+    <div class="sidebar-nav">
+      <p class="sidebar-section-title">Principal</p>
+      <a href="./Menu.html" class="nav-item">Pagina Inicial</a>
+      <a href="./CadProdutos.html" class="nav-item">Cadastro de Produtos</a>
+      <a href="./CadFornecedores.html" class="nav-item">Cadastro de Fornecedores</a>
+      <a href="./Movimentacoes.html" class="nav-item">Movimentacoes</a>
+      <a href="./Relatorios.html" class="nav-item">Relatorios</a>
+      <a href="./GestaoDeUsuario.html" class="nav-item active">Gestao de Usuarios</a>
+    </div>
+  </nav>
+
+  <div class="dashboard-wrapper">
+    <main class="dashboard-main">
+      <div class="page-header">
+        <div>
+          <h2>Gestao de Usuarios</h2>
+          <div class="breadcrumb-bar"><span>Principal</span> / Gestao de Usuarios</div>
+        </div>
+      </div>
+
+      <section class="content-card">
+        <div class="card-header">
+          <h3>Usuarios</h3>
+        </div>
+        <div class="card-body" style="padding: 0;">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Nome</th>
+                <th>Permissão</th>
+                <th>Acoes</th>
+              </tr>
+            </thead>
+            <tbody id="usuariosBody"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="content-card" style="margin-top: 1rem;">
+        <div class="card-body">
+          <div id="usuarioFeedback" class="feedback-banner" role="status" aria-live="polite" hidden></div>
+          <form id="usuarioForm" novalidate>
+            <input type="hidden" id="usuarioId" name="usuarioId" />
+            <div class="form-field">
+              <input type="text" id="nomeUsuario" name="nomeUsuario" placeholder="Nome do usuario" />
+            </div>
+            <div class="form-field">
+              <input type="password" id="senhaUsuario" name="senhaUsuario" placeholder="Senha do usuario" />
+            </div>
+            <div class="form-field">
+              <select id="perfilUsuario" name="perfilUsuario">
+                <option value="">Selecione o perfil</option>
+                <option value="Admin">Admin</option>
+                <option value="Operador">Operador</option>
+                <option value="Consulta">Consulta</option>
+              </select>
+            </div>
+            <div class="hero-cta">
+              <button type="submit" id="usuarioSubmitBtn" class="btn-primary-custom">Adicionar usuario</button>
+              <button type="button" id="usuarioCancelBtn" class="btn-outline-custom" hidden>Cancelar edicao</button>
+            </div>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>Projeto academico - Sistema de Estoque</p>
+    </footer>
+  </div>
+
+  <script src="../js/dados-mock.js"></script>
+  <script src="../js/app.js"></script>
+  <script src="../js/gestao-usuarios.js"></script>
+</body>
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Relatorios | Sistema de Estoque</title>
+  <link rel="stylesheet" href="../css/Style.css" />
+</head>
+<body class="dashboard-page">
+  <header class="site-header">
+    <div class="brand">
+      <div class="logo-icon">SE</div>
+      <span>Sistema de Estoque</span>
+    </div>
+    <div class="header-actions">
+      <a href="./Menu.html" class="btn-outline-custom">Menu</a>
+      <a href="./Main.html" id="logoutBtn" data-logout-link="true" class="btn-outline-custom">Sair</a>
+    </div>
+  </header>
+
+  <nav class="sidebar" aria-label="Menu principal">
+    <div class="sidebar-nav">
+      <p class="sidebar-section-title">Principal</p>
+      <a href="./Menu.html" class="nav-item">Pagina Inicial</a>
+      <a href="./CadProdutos.html" class="nav-item">Cadastro de Produtos</a>
+      <a href="./CadFornecedores.html" class="nav-item">Cadastro de Fornecedores</a>
+      <a href="./Movimentacoes.html" class="nav-item">Movimentacoes</a>
+      <a href="./Relatorios.html" class="nav-item active">Relatorios</a>
+      <a href="./GestaoDeUsuario.html" class="nav-item">Gestao de Usuarios</a>
+    </div>
+  </nav>
+
+  <div class="dashboard-wrapper">
+    <main class="dashboard-main">
+      <div class="page-header">
+        <div>
+          <h2>Relatorios</h2>
+          <div class="breadcrumb-bar"><span>Principal</span> / Relatorios</div>
+        </div>
+      </div>
+
+      <section class="content-card" style="margin-bottom: 1rem;">
+        <div class="card-header">
+          <h3>Filtros</h3>
+        </div>
+        <div class="card-body">
+          <div id="relatorioFeedback" class="feedback-banner" role="status" aria-live="polite" hidden></div>
+          <form id="filtroRelatorioForm" novalidate>
+            <div class="hero-cta" style="margin-bottom: 1rem;">
+              <div class="form-field" style="min-width: 180px; flex: 1; margin-bottom: 0;">
+                <input type="date" id="dataInicio" name="dataInicio" />
+              </div>
+              <div class="form-field" style="min-width: 180px; flex: 1; margin-bottom: 0;">
+                <input type="date" id="dataFim" name="dataFim" />
+              </div>
+              <button type="submit" id="filtrarRelatorioBtn" class="btn-primary-custom">Filtrar</button>
+              <button type="button" id="exportarPdfBtn" class="btn-outline-custom">Exportar PDF</button>
+            </div>
+          </form>
+        </div>
+      </section>
+
+      <div class="stats-grid" style="margin-bottom: 1rem;">
+        <article class="stat-widget">
+          <div class="widget-info">
+            <div class="widget-value" id="totalEntradas">0</div>
+            <div class="widget-label">Total de entradas</div>
+          </div>
+        </article>
+        <article class="stat-widget">
+          <div class="widget-info">
+            <div class="widget-value" id="totalSaidas">0</div>
+            <div class="widget-label">Total de saidas</div>
+          </div>
+        </article>
+        <article class="stat-widget">
+          <div class="widget-info">
+            <div class="widget-value" id="totalMovimentacoes">0</div>
+            <div class="widget-label">Movimentacoes filtradas</div>
+          </div>
+        </article>
+      </div>
+
+      <section class="content-card">
+        <div class="card-header">
+          <h3>Movimentacoes por periodo</h3>
+        </div>
+        <div class="card-body" style="padding: 0;">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Semana</th>
+                <th>Produto</th>
+                <th>Tipo</th>
+                <th>Quantidade</th>
+                <th>Valor</th>
+              </tr>
+            </thead>
+            <tbody id="relatoriosBody"></tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>Projeto academico - Sistema de Estoque</p>
+    </footer>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
+  <script src="../js/dados-mock.js"></script>
+  <script src="../js/app.js"></script>
+  <script src="../js/relatorios.js"></script>
+</body>
+</html>
