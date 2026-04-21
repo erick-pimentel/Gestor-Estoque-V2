@@ -18,11 +18,6 @@ Edite `src/main/resources/application.properties` e preencha:
 mvn spring-boot:run
 ```
 
-Se estiver usando o alias PowerShell criado anteriormente:
-```powershell
-boot
-```
-
 ## Testes
 ```bash
 mvn test
