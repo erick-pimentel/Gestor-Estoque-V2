@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login | Sistema de Estoque</title>
+  <link rel="stylesheet" href="../Style.css" />
+</head>
+<body class="login-page">
+  <header class="site-header">
+    <div class="brand">
+      <div class="logo-icon">SE</div>
+      <span>Sistema de Estoque</span>
+    </div>
+    <div class="header-actions">
+      <a href="Main.html" class="btn-outline-custom">Voltar</a>
+    </div>
+  </header>
+
+  <main class="login-main">
+    <section class="login-card" aria-labelledby="login-title">
+      <div class="card-logo">
+        <div class="logo-circle">SE</div>
+        <h1 id="login-title">Acesso ao sistema</h1>
+        <p>Use suas credenciais para entrar</p>
+      </div>
+
+      <div class="login-error" id="errorMessage" role="status"></div>
+
+      <form id="loginForm" novalidate>
+        <div class="form-field">
+          <input type="text" id="usuario" name="usuario" placeholder="Usuario" required />
+        </div>
+        <div class="form-field">
+          <input type="password" id="senha" name="senha" placeholder="Senha" required />
+        </div>
+        <button type="submit" class="login-submit">Confirmar</button>
+      </form>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>Projeto - Sistema de Estoque</p>
+  </footer>
+
+  <script src="../JS/dados-mock.js"></script>
+  <script src="../JS/app.js"></script>
+  <script src="../JS/login.js"></script>
+</body>
+</html>
