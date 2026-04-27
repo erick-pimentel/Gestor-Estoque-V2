@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Modelo de Relatório - Estoque</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f5f5f5;
+      padding: 20px;
+    }
+    .report-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      background: white;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    .report-header {
+      text-align: center;
+      border-bottom: 3px solid #10b981;
+      padding-bottom: 20px;
+      margin-bottom: 30px;
+    }
+    .report-header h1 {
+      color: #333;
+      font-size: 28px;
+      margin-bottom: 5px;
+    }
+    .report-header p {
+      color: #666;
+      font-size: 14px;
+    }
+    .report-summary {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+      margin-bottom: 30px;
+    }
+    .summary-card {
+      padding: 20px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      border-radius: 8px;
+      text-align: center;
+    }
+    .summary-card.total-produtos {
+      background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    }
+    .summary-card.valor-total {
+      background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    }
+    .summary-value {
+      font-size: 32px;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+    .summary-label {
+      font-size: 12px;
+      opacity: 0.9;
+    }
+    .table-wrapper {
+      overflow-x: auto;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    thead {
+      background: #f0f0f0;
+    }
+    th {
+      padding: 12px;
+      text-align: left;
+      font-weight: 600;
+      color: #333;
+      border-bottom: 2px solid #ddd;
+    }
+    td {
+      padding: 12px;
+      border-bottom: 1px solid #eee;
+    }
+    tbody tr:hover {
+      background: #f9f9f9;
+    }
+    .stock-badge {
+      display: inline-block;
+      padding: 4px 8px;
+      border-radius: 4px;
+      font-size: 12px;
+      font-weight: bold;
+    }
+    .stock-low {
+      background: #ffebee;
+      color: #c62828;
+    }
+    .stock-normal {
+      background: #e8f5e9;
+      color: #2e7d32;
+    }
+    .stock-high {
+      background: #e3f2fd;
+      color: #1565c0;
+    }
+    .currency {
+      font-weight: 500;
+      color: #0066cc;
+    }
+    .report-notes {
+      margin-top: 30px;
+      padding: 15px;
+      background: #f9f9f9;
+      border-left: 4px solid #10b981;
+      border-radius: 4px;
+    }
+    .report-notes h3 {
+      font-size: 14px;
+      margin-bottom: 10px;
+      color: #333;
+    }
+    .report-notes ul {
+      margin-left: 20px;
+      font-size: 13px;
+      color: #666;
+      line-height: 1.8;
+    }
+    @media print {
+      body {
+        background: white;
+        padding: 0;
+      }
+      .report-container {
+        box-shadow: none;
+        max-width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="report-container">
+    <!-- CABEÇALHO -->
+    <div class="report-header">
+      <h1>📦 Relatório de Estoque</h1>
+      <p>Data: 22/04/2026 - Posição em tempo real</p>
+    </div>
+
+    <!-- RESUMO -->
+    <div class="report-summary">
+      <div class="summary-card total-produtos">
+        <div class="summary-value">10</div>
+        <div class="summary-label">Total de Produtos</div>
+      </div>
+      <div class="summary-card valor-total">
+        <div class="summary-value">R$ 45.828,30</div>
+        <div class="summary-label">Valor Total do Estoque</div>
+      </div>
+    </div>
+
+    <!-- TABELA DE ESTOQUE -->
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>Código</th>
+            <th>Produto</th>
+            <th>Quantidade</th>
+            <th>Preço Venda</th>
+            <th>Valor Total</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>NB-DELL-001</td>
+            <td>Notebook Dell Inspiron 15</td>
+            <td>15</td>
+            <td class="currency">R$ 3.200,00</td>
+            <td class="currency">R$ 48.000,00</td>
+            <td><span class="stock-badge stock-normal">Normal</span></td>
+          </tr>
+          <tr>
+            <td>MO-LOG-001</td>
+            <td>Mouse Logitech MX Master</td>
+            <td>45</td>
+            <td class="currency">R$ 250,00</td>
+            <td class="currency">R$ 11.250,00</td>
+            <td><span class="stock-badge stock-high">Alto</span></td>
+          </tr>
+          <tr>
+            <td>TEC-RGB-001</td>
+            <td>Teclado Mecânico RGB</td>
+            <td>25</td>
+            <td class="currency">R$ 600,00</td>
+            <td class="currency">R$ 15.000,00</td>
+            <td><span class="stock-badge stock-normal">Normal</span></td>
+          </tr>
+          <tr>
+            <td>MON-LG-001</td>
+            <td>Monitor LG 24 FHD</td>
+            <td>8</td>
+            <td class="currency">R$ 1.200,00</td>
+            <td class="currency">R$ 9.600,00</td>
+            <td><span class="stock-badge stock-low">Baixo</span></td>
+          </tr>
+          <tr>
+            <td>WEB-HD-001</td>
+            <td>Webcam HD 1080p</td>
+            <td>30</td>
+            <td class="currency">R$ 199,90</td>
+            <td class="currency">R$ 5.997,00</td>
+            <td><span class="stock-badge stock-normal">Normal</span></td>
+          </tr>
+          <tr>
+            <td>SSD-SAM-001</td>
+            <td>SSD Samsung 1TB</td>
+            <td>20</td>
+            <td class="currency">R$ 650,00</td>
+            <td class="currency">R$ 13.000,00</td>
+            <td><span class="stock-badge stock-normal">Normal</span></td>
+          </tr>
+          <tr>
+            <td>HEAD-COR-001</td>
+            <td>Headset Corsair</td>
+            <td>12</td>
+            <td class="currency">R$ 450,00</td>
+            <td class="currency">R$ 5.400,00</td>
+            <td><span class="stock-badge stock-normal">Normal</span></td>
+          </tr>
+          <tr>
+            <td>PAD-GAM-001</td>
+            <td>Mousepad Gamer</td>
+            <td>50</td>
+            <td class="currency">R$ 79,90</td>
+            <td class="currency">R$ 3.995,00</td>
+            <td><span class="stock-badge stock-high">Alto</span></td>
+          </tr>
+          <tr>
+            <td>HUB-USB-001</td>
+            <td>Hub USB 3.0</td>
+            <td>35</td>
+            <td class="currency">R$ 150,00</td>
+            <td class="currency">R$ 5.250,00</td>
+            <td><span class="stock-badge stock-normal">Normal</span></td>
+          </tr>
+          <tr>
+            <td>CABO-HDMI-001</td>
+            <td>Cabo HDMI 2m</td>
+            <td>60</td>
+            <td class="currency">R$ 35,00</td>
+            <td class="currency">R$ 2.100,00</td>
+            <td><span class="stock-badge stock-high">Alto</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- OBSERVAÇÕES -->
+    <div class="report-notes">
+      <h3>📌 Notas e Observações:</h3>
+      <ul>
+        <li><strong>Baixo estoque:</strong> Monitor LG 24 FHD (8 unidades) - Recomenda-se reabastecimento urgente</li>
+        <li><strong>Alto estoque:</strong> Mouse Logitech, Mousepad Gamer e Cabo HDMI - Considere promoções para redução</li>
+        <li><strong>Atualização:</strong> Dados atualizados em tempo real do banco de dados</li>
+        <li><strong>Próxima ação:</strong> Executar contagem física em 30 dias</li>
+      </ul>
+    </div>
+  </div>
+</body>
+</html>
+

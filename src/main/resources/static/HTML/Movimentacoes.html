@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Movimentacoes | Sistema de Estoque</title>
+  <link rel="stylesheet" href="../Style.css" />
+</head>
+<body class="dashboard-page">
+  <header class="site-header">
+    <div class="brand">
+      <div class="logo-icon">SE</div>
+      <span>Sistema de Estoque</span>
+    </div>
+    <div class="header-actions">
+      <a href="Menu.html" class="btn-outline-custom">Menu</a>
+      <a href="Main.html" id="logoutBtn" data-logout-link="true" class="btn-outline-custom">Sair</a>
+    </div>
+  </header>
+
+  <nav class="sidebar" aria-label="Menu principal">
+    <div class="sidebar-nav">
+      <p class="sidebar-section-title">Principal</p>
+      <a href="Menu.html" class="nav-item">Pagina Inicial</a>
+      <a href="CadProdutos.html" class="nav-item">Cadastro de Produtos</a>
+      <a href="CadFornecedores.html" class="nav-item">Cadastro de Fornecedores</a>
+      <a href="./Movimentacoes.html" class="nav-item active">Movimentacoes</a>
+      <a href="Relatorios.html" class="nav-item">Relatorios</a>
+      <a href="GestaoDeUsuario.html" class="nav-item">Gestao de Usuarios</a>
+    </div>
+  </nav>
+
+  <div class="dashboard-wrapper">
+    <main class="dashboard-main">
+      <div class="page-header">
+        <div>
+          <h2>Movimentacoes</h2>
+          <div class="breadcrumb-bar"><span>Principal</span> / Movimentacoes</div>
+        </div>
+      </div>
+
+      <section class="content-card">
+        <div class="card-header">
+          <h3>Novo registro</h3>
+        </div>
+        <div class="card-body">
+          <div id="movimentacaoFeedback" class="feedback-banner" role="status" aria-live="polite" hidden></div>
+          <form action="#" method="post" id="movimentacaoForm" novalidate>
+            <div class="form-field">
+              <select id="tipoMovimentacao" name="tipoMovimentacao">
+                <option value="">Selecione o tipo</option>
+                <option value="ENTRADA">ENTRADA</option>
+                <option value="SAIDA">SAIDA</option>
+                <option value="AJUSTE">AJUSTE</option>
+              </select>
+            </div>
+            <div class="form-field">
+              <select id="produtoId" name="produtoId">
+                <option value="">Selecione um produto</option>
+              </select>
+            </div>
+            <div class="form-field">
+              <input type="text" id="quantidade" name="quantidade" placeholder="Quantidade - ex: 1000" />
+            </div>
+            <div class="form-field">
+              <input type="text" id="valorUnitario" name="valorUnitario" placeholder="Valor unitário (opcional)" />
+            </div>
+            <div class="form-field" id="campoFornecedor" hidden>
+              <select id="fornecedorId" name="fornecedorId">
+                <option value="">Selecione um fornecedor</option>
+              </select>
+            </div>
+            <div class="form-field" id="campoObservacao" hidden>
+              <textarea id="observacao" name="observacao" placeholder="Observacao do ajuste"></textarea>
+            </div>
+            <div class="hero-cta">
+              <button type="submit" id="movimentacaoSubmitBtn" class="btn-primary-custom">Registrar</button>
+            </div>
+          </form>
+        </div>
+      </section>
+
+      <section class="content-card" style="margin-top: 1rem;">
+        <div class="card-header">
+          <h3>Movimentacoes registradas</h3>
+        </div>
+        <div class="card-body" style="padding: 0;">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Data</th>
+                <th>Produto</th>
+                <th>Tipo</th>
+                <th>Quantidade</th>
+                <th>Valor</th>
+                <th>Detalhe</th>
+              </tr>
+            </thead>
+            <tbody id="movimentacoesBody"></tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>Projeto academico - Sistema de Estoque</p>
+    </footer>
+  </div>
+
+  <script src="../JS/dados-mock.js"></script>
+  <script src="../JS/app.js"></script>
+  <script src="../JS/movimentacoes.js"></script>
+</body>
+</html>
